@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PotoNote™</title>
+    <script src="app.js"></script>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body style="display: flex; flex-direction: column;">
+    <h1>PotoNote™</h1>
+    <div style="display: flex; flex-direction: row; flex-wrap: wrap;">
+        <div class="content-holder">
+            <h2>Current Gnaw Value: <span id="current-value">Loading...</span></h2>
+            <div class="currency-inputs">
+                <input class="currency-input" id="new-value" type="number" />
+                <input class="currency-input" id="change-reason" placeholder="Reason for change" />
+                <input class="currency-input" id="change-date" placeholder="Date (eg. Year 431, Month 4)" />
+                <button id="currency-update" onclick="updateValue()">Update</button>
+            </div>
+            
+            <h2>History</h2>
+            <ul id="history-list"></ul>
+        </div>
+        <div class="content-holder">
+            <h2>Inflation Calculator</h2>
+            <div class="currency-inputs">
+                <input class="currency-input" id="inflation-d20" type="number" placeholder="D20" style="text-align: center;"/>
+                <button id="currency-update" onclick="inflationCalculator()">Inflation</button>
+                <h2>Inflation: <span id="inflation-result">run to update</span></h2>
+            </div>
+        </div>
+        <div class="content-holder">
+            <h2>Weather</h2>
+            
+        </div>
+        <div class="content-holder">
+            <h2>Players</h2>
+            
+        </div>
+    </div>
+</body>
+</html>
