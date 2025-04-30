@@ -28,16 +28,20 @@ db.run(`
 `);
 db.run(`
     CREATE TABLE IF NOT EXISTS players (
-        name TEXT PRIMARY KEY,
+        id INTEGER PRIMARY KEY AUTOINCREMENT,
+        name TEXT,
         perception REAL,
         maxhp REAL,
+        corruption REAL,
         copper REAL,
         silver REAL,
         gold REAL,
+        platinum REAL,
         gnaw REAL
     )
 `);
 
+// CURRENCY###################################
 // Get current value
 app.get("/api/value", (req, res) => {
     db.get("SELECT value, date FROM settings WHERE key = 'currency_value'", [], (err, row) => {
@@ -46,8 +50,7 @@ app.get("/api/value", (req, res) => {
         const date = row?.date ?? null;
         res.json({value, date});
     });
-});
-  
+});  
 // Update value
 app.post("/api/value", (req, res) => {
     const { newValue, reason, gamedate } = req.body;
@@ -70,13 +73,34 @@ app.post("/api/value", (req, res) => {
         );
     });
 });
-
 // Get full log
 app.get("/api/logs", (req, res) => {
     db.all("SELECT * FROM currency_log ORDER BY timestamp DESC", [], (err, rows) => {
     res.json(rows);
     });
 });
+
+//PLAYERS#######################
+//Get players
+app.get("/api/players", (req, res) =>{
+    db.all("SELECT * FROM players", [], (err, rows)=>{
+        res.json(rows);
+    })
+})
+//Add player
+app.post("/api/player", (req,res)=>{
+    const player = req.body;
+    db.run(`INSERT INTO players
+        (name, perception, maxhp, corruption, copper, silver, gold, platinum, gnaw) VALUES (?,?,?,?,?,?,?,?,?)
+        `,
+        [player.name, player.perception, player.maxhp, player.corruption, player.copper, player.silver, player.gold, player.platinum, player.gnaw]
+    );
+})
+
+//Update players
+app.post("/api/players", (req,res)=>{
+    const players = req.body;
+})
 
 app.listen(5500, () => {
     console.log("Server running at http://localhost:5500");

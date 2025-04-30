@@ -2,6 +2,7 @@ body{
     display: flex;
     background-color: rgb(17, 17, 17);
     color: white;
+    font-family: Arial, Helvetica, sans-serif;
 }
 .content-holder{
     border: 2px solid black;
@@ -23,13 +24,17 @@ body{
     width: 300px;
     border: 0px;
 }
-#currency-update{
+.button{
     background-color: rgb(37, 37, 37);
     border: 0px;
     color: white;
     height: 25px;
     width: 304px;
 }
+.button:hover{
+    background-color: rgb(68, 119, 68);
+}
+
 #history-list{
     display: flex;
     flex-direction: column;
@@ -40,7 +45,43 @@ body{
     background-color: rgb(37, 37, 37);
     text-align: center;
     width: 75%;
-    border: 1px solid red;
+    border: 1px solid black;
     margin: 2px;
     padding: 5px;
+}
+#players{
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.player-card{
+    border-radius: 5px;
+    margin: 2px;
+    padding: 5px 10px;
+    max-width: 200px;
+    background-color: rgb(30, 30, 30);
+}
+.input{
+    width: 70px;
+    background-color: rgb(35, 35, 35);
+    color: white;
+    border: 0px;
+    margin: 0px;
+    padding: 0px;
+}
+.input:hover{
+    background-color: rgb(68, 119, 68);
+}
+.input:focus{
+    background-color: rgb(43, 69, 43);
+    color: rgb(170, 215, 66);
+}
+
+.p-currency-input{
+    width: 30px;
+    background-color: rgb(35, 35, 35);
+    color: white;
+    border: 0px;
+    margin: 0px;
+    padding: 0px;
 }
